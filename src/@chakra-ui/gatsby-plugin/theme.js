@@ -4,8 +4,8 @@ import { createBreakpoints } from "@chakra-ui/theme-tools"
 
 const theme = {
   breakpoints: createBreakpoints({
-    sm: "40em",
-    md: "52em",
+    sm: "50em",
+    md: "55em",
     lg: "64em",
   }),
   fonts: {
