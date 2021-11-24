@@ -1,17 +1,21 @@
 import { Button, IconButton } from "@chakra-ui/button"
 import { Flex, Heading } from "@chakra-ui/layout"
 import React from "react"
-import {
-  FaEnvelope,
-  FaGithub,
-  FaHeart,
-  FaMoon,
-  FaTwitter,
-  FaBars,
-} from "react-icons/fa"
+import { FaHeart, FaMoon, FaBars } from "react-icons/fa"
 import { theme as chakraTheme } from "@chakra-ui/react"
+import { SocialMedia } from "./SocialMedia"
+import countapi from "countapi-js"
 
 export const Header = () => {
+  const likesCountKey = "likes"
+  const [likes, setLikes] = React.useState("...")
+  React.useEffect(() => {
+    countapi.get("sa1.co.in", likesCountKey).then(result => {
+      if (result.status === 200) {
+        setLikes(result.value.toString())
+      }
+    })
+  }, [])
   const [mobileMenuIsOpen, mobileMenuSetOpen] = React.useState(false)
   return (
     <>
@@ -26,9 +30,10 @@ export const Header = () => {
         m="0"
         justifyContent="center"
         zIndex="4"
+        backgroundColor="white"
       >
         <Flex
-          width="90rem"
+          width="90em"
           height="100%"
           padding="0 1.5rem"
           justifyContent="space-between"
@@ -71,8 +76,15 @@ export const Header = () => {
               variant="outline"
               leftIcon={<FaHeart />}
               ml="10px"
+              onClick={() => {
+                countapi.hit("sa1.co.in", likesCountKey).then(result => {
+                  if (result.status === 200) {
+                    setLikes(result.value.toString())
+                  }
+                })
+              }}
             >
-              144 Likes
+              {likes} Likes
             </Button>
             <IconButton
               size="sm"
@@ -174,41 +186,10 @@ const NavButtons = ({ display }) => {
       <Flex
         m={["10px 0", "0", "0"]}
         justifyContent={["center", "start", "start"]}
+        display={display}
       >
-        <IconButton
-          size="sm"
-          rounded="full"
-          variant="ghost"
-          m="0 3px"
-          display={display}
-        >
-          <FaGithub size="25px" color={chakraTheme.colors.gray["400"]} />
-        </IconButton>
-        <IconButton
-          size="sm"
-          rounded="full"
-          variant="ghost"
-          m="0 3px"
-          display={display}
-        >
-          <FaTwitter size="25px" color={chakraTheme.colors.gray["400"]} />
-        </IconButton>
-        <IconButton
-          size="sm"
-          rounded="full"
-          variant="ghost"
-          m="0 3px"
-          display={display}
-        >
-          <FaEnvelope size="25px" color={chakraTheme.colors.gray["400"]} />
-        </IconButton>
-        <IconButton
-          size="sm"
-          rounded="full"
-          variant="outline"
-          m="0 10px"
-          display={display}
-        >
+        <SocialMedia color={chakraTheme.colors.gray["400"]} />
+        <IconButton size="sm" rounded="full" variant="outline" m="0 10px">
           <FaMoon color={chakraTheme.colors.gray["400"]} />
         </IconButton>
       </Flex>

@@ -6,7 +6,8 @@ const theme = {
   breakpoints: createBreakpoints({
     sm: "50em",
     md: "55em",
-    lg: "64em",
+    lg: "90em",
+    xl: "100em",
   }),
   fonts: {
     ...chakraTheme.fonts,
