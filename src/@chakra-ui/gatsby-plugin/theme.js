@@ -14,6 +14,11 @@ const theme = {
     body: `Inter`,
     heading: `Inter`,
   },
+  config: {
+    initialColorMode: "light",
+    useSystemColorMode: true,
+    ...chakraTheme.config,
+  },
 }
 
 export default extendTheme(theme)

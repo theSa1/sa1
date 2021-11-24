@@ -1,11 +1,12 @@
 import { Button, IconButton } from "@chakra-ui/button"
 import { Flex, Heading } from "@chakra-ui/layout"
 import React from "react"
-import { FaHeart, FaMoon, FaBars } from "react-icons/fa"
+import { FaHeart, FaMoon, FaBars, FaSun } from "react-icons/fa"
 import { theme as chakraTheme } from "@chakra-ui/react"
 import { SocialMedia } from "./SocialMedia"
 import countapi from "countapi-js"
 import { Link } from "gatsby"
+import { useColorMode } from "@chakra-ui/color-mode"
 
 export const Header = ({ page }) => {
   const likesCountKey = "likes"
@@ -99,12 +100,12 @@ export const Header = ({ page }) => {
           </Flex>
         </Flex>
       </Flex>
-      <MobileNav isOpen={mobileMenuIsOpen} />
+      <MobileNav isOpen={mobileMenuIsOpen} page={page} />
     </>
   )
 }
 
-const MobileNav = ({ isOpen }) => {
+const MobileNav = ({ isOpen, page }) => {
   return (
     <Flex
       shadow="base"
@@ -121,7 +122,7 @@ const MobileNav = ({ isOpen }) => {
       right="0"
       backgroundColor="#fff"
     >
-      <Nav />
+      <Nav page={page} />
       <NavButtons />
     </Flex>
   )
@@ -195,6 +196,7 @@ const Nav = ({ display, page: location }) => {
 }
 
 const NavButtons = ({ display }) => {
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
     <>
       <Flex
@@ -203,8 +205,18 @@ const NavButtons = ({ display }) => {
         display={display}
       >
         <SocialMedia color={chakraTheme.colors.gray["400"]} />
-        <IconButton size="sm" rounded="full" variant="outline" m="0 10px">
-          <FaMoon color={chakraTheme.colors.gray["400"]} />
+        <IconButton
+          size="sm"
+          rounded="full"
+          variant="outline"
+          m="0 10px"
+          onClick={toggleColorMode}
+        >
+          {colorMode === "light" ? (
+            <FaMoon color={chakraTheme.colors.gray["400"]} />
+          ) : (
+            <FaSun color={chakraTheme.colors.gray["400"]} />
+          )}
         </IconButton>
       </Flex>
     </>
