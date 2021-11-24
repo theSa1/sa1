@@ -5,8 +5,9 @@ import { FaHeart, FaMoon, FaBars } from "react-icons/fa"
 import { theme as chakraTheme } from "@chakra-ui/react"
 import { SocialMedia } from "./SocialMedia"
 import countapi from "countapi-js"
+import { Link } from "gatsby"
 
-export const Header = () => {
+export const Header = ({ page }) => {
   const likesCountKey = "likes"
   const [likes, setLikes] = React.useState("...")
   React.useEffect(() => {
@@ -68,7 +69,7 @@ export const Header = () => {
               fill="#1A202C"
             />
           </svg>
-          <Nav display={["none", "inline-flex", "inline-flex"]} />
+          <Nav display={["none", "inline-flex", "inline-flex"]} page={page} />
           <Flex>
             <NavButtons display={["none", "inline-flex", "inline-flex"]} />
             <Button
@@ -104,9 +105,6 @@ export const Header = () => {
 }
 
 const MobileNav = ({ isOpen }) => {
-  React.useEffect(() => {
-    console.log(isOpen)
-  }, [isOpen])
   return (
     <Flex
       shadow="base"
@@ -129,53 +127,69 @@ const MobileNav = ({ isOpen }) => {
   )
 }
 
-const Nav = ({ display }) => {
+const Nav = ({ display, page: location }) => {
+  const [page, setPage] = React.useState()
+
+  React.useEffect(() => {
+    if (typeof location == "undefined") {
+      return
+    }
+    setPage(location)
+  }, [])
   return (
     <Flex
       display={display}
       justifyContent={["center", "start", "start"]}
       m={["10px 0", "0", "0"]}
     >
-      <Heading
-        as="a"
-        size="sm"
-        color="gray.800"
-        m="0 12px"
-        _after={{ backgroundColor: "teal.300" }}
-        className="menu-item active"
-      >
-        Home
-      </Heading>
-      <Heading
-        as="a"
-        size="sm"
-        color="gray.800"
-        m="0 12px"
-        _after={{ backgroundColor: "teal.300" }}
-        className="menu-item"
-      >
-        About
-      </Heading>
-      <Heading
-        as="a"
-        size="sm"
-        color="gray.800"
-        m="0 12px"
-        _after={{ backgroundColor: "teal.300" }}
-        className="menu-item"
-      >
-        Projects
-      </Heading>
-      <Heading
-        as="a"
-        size="sm"
-        color="gray.800"
-        m="0 12px"
-        _after={{ backgroundColor: "teal.300" }}
-        className="menu-item"
-      >
-        Contact
-      </Heading>
+      <Link to="/">
+        <Heading
+          as="p"
+          size="sm"
+          color="gray.800"
+          m="0 12px"
+          _after={{ backgroundColor: "teal.300" }}
+          className={`menu-item${page === "/" ? " active" : ""}`}
+        >
+          Home
+        </Heading>
+      </Link>
+      <Link to="/about">
+        <Heading
+          as="p"
+          size="sm"
+          color="gray.800"
+          m="0 12px"
+          _after={{ backgroundColor: "teal.300" }}
+          className={`menu-item${page === "/about" ? " active" : ""}`}
+        >
+          About
+        </Heading>
+      </Link>
+      <Link to="/projects">
+        <Heading
+          as="p"
+          size="sm"
+          color="gray.800"
+          m="0 12px"
+          _after={{ backgroundColor: "teal.300" }}
+          className={`menu-item${page === "/projects" ? " active" : ""}`}
+        >
+          Projects
+        </Heading>
+      </Link>
+      <Link to="/contact">
+        <Heading
+          as="p"
+          size="sm"
+          color="gray.800"
+          m="0 12px"
+          _after={{ backgroundColor: "teal.300" }}
+          className={`menu-item${page === "/contact" ? " active" : ""}`}
+        >
+          Contact
+        </Heading>
+      </Link>
     </Flex>
   )
 }

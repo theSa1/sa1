@@ -7,11 +7,12 @@ import { Button } from "@chakra-ui/button"
 import { HiChevronRight } from "react-icons/hi"
 import { SocialMedia } from "../components/SocialMedia"
 import { theme as chakraTheme } from "@chakra-ui/react"
+import { Link } from "gatsby"
 
-export default function Home() {
+export default function Home({ location }) {
   return (
-    <Layout>
-      <Flex h="calc(100vh - 80px)">
+    <Layout page={location.pathname}>
+      <Flex h="calc(100vh - 80px)" className="home-section">
         <Flex
           mt="auto"
           mb="auto"
@@ -34,31 +35,35 @@ export default function Home() {
             our lives forever for the better.
           </Heading>
           <Flex mt="15px">
-            <Button
-              w="fit-content"
-              backgroundColor="teal.300"
-              size="sm"
-              color="white"
-              _hover={{ backgroundColor: "teal.400" }}
-              _active={{ backgroundColor: "teal.300" }}
-              rightIcon={<HiChevronRight />}
-              fontWeight="500"
-              letterSpacing=".5px"
-            >
-              Know More
-            </Button>
-            <Button
-              w="fit-content"
-              variant="outline"
-              size="sm"
-              color="gray.600"
-              borderColor="gray.600"
-              ml="10px"
-              fontWeight="500"
-              letterSpacing=".5px"
-            >
-              Contact Me
-            </Button>
+            <Link to="about">
+              <Button
+                w="fit-content"
+                backgroundColor="teal.300"
+                size="sm"
+                color="white"
+                _hover={{ backgroundColor: "teal.400" }}
+                _active={{ backgroundColor: "teal.300" }}
+                rightIcon={<HiChevronRight />}
+                fontWeight="500"
+                letterSpacing=".5px"
+              >
+                Know More
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button
+                w="fit-content"
+                variant="outline"
+                size="sm"
+                color="gray.600"
+                borderColor="gray.600"
+                ml="10px"
+                fontWeight="500"
+                letterSpacing=".5px"
+              >
+                Contact Me
+              </Button>
+            </Link>
           </Flex>
           <Flex mt="15px">
             <SocialMedia color={chakraTheme.colors.gray["600"]} />

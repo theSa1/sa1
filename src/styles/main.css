@@ -26,3 +26,9 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+@media only screen and (max-height: 500px) {
+  .home-section {
+    height: 400px;
+  }
+}
