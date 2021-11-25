@@ -1,9 +1,10 @@
 import React from "react"
 import { Flex } from "@chakra-ui/layout"
 import { Header } from "./Header"
-import Scrollbars from "react-custom-scrollbars-2"
 import { useColorMode } from "@chakra-ui/color-mode"
 import { colors } from "../styles/colors"
+import loadable from "@loadable/component"
+const Scrollbars = loadable(() => import("react-custom-scrollbars-2"))
 
 export const Layout = ({ children, page }) => {
   const { colorMode } = useColorMode()
@@ -11,13 +12,11 @@ export const Layout = ({ children, page }) => {
   return (
     <Flex flexDirection="column" overflow="hidden" backgroundColor="gray.50">
       <Header page={page} />
-      <Scrollbars
-        style={{
-          height: "calc(100vh - 70px)",
-          width: "100vw",
-          marginTop: "70px",
-          backgroundColor: colors.background[colorMode],
-        }}
+      <Flex
+        h="calc(100vh - 70px)"
+        w="100vw"
+        mt="70px"
+        backgroundColor={colors.background[colorMode]}
       >
         <Flex
           flexDirection="column"
@@ -25,10 +24,12 @@ export const Layout = ({ children, page }) => {
           w={["100vw", "100vw", "100vw", "90em"]}
           mr="auto"
           ml="auto"
+          overflow="auto"
+          className="scrollbar"
         >
           {children}
         </Flex>
-      </Scrollbars>
+      </Flex>
     </Flex>
   )
 }

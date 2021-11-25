@@ -5,6 +5,10 @@
   position: relative;
 }
 
+.scrollbar {
+  scrollbar-width: thin;
+}
+
 .menu-item:after {
   content: "";
   position: absolute;

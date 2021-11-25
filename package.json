@@ -22,9 +22,7 @@
     "countapi-js": "^1.0.2",
     "framer-motion": "^5.2.0",
     "gatsby": "^4.1.0",
-    "gatsby-plugin-google-fonts": "^1.0.1",
     "react": "^17.0.1",
-    "react-custom-scrollbars-2": "^4.4.0",
     "react-dom": "^17.0.1",
     "react-icons": "^4.3.1"
   },
