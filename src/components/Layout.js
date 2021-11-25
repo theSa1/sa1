@@ -3,8 +3,6 @@ import { Flex } from "@chakra-ui/layout"
 import { Header } from "./Header"
 import { useColorMode } from "@chakra-ui/color-mode"
 import { colors } from "../styles/colors"
-import loadable from "@loadable/component"
-const Scrollbars = loadable(() => import("react-custom-scrollbars-2"))
 
 export const Layout = ({ children, page }) => {
   const { colorMode } = useColorMode()
