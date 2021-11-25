@@ -4,12 +4,14 @@ import { Layout } from "../components/Layout"
 import { Flex, Heading } from "@chakra-ui/layout"
 import { chakra } from "@chakra-ui/system"
 import { Button } from "@chakra-ui/button"
+import { useColorMode } from "@chakra-ui/color-mode"
 import { HiChevronRight } from "react-icons/hi"
 import { SocialMedia } from "../components/SocialMedia"
-import { theme as chakraTheme } from "@chakra-ui/react"
 import { Link } from "gatsby"
+import { colors } from "../styles/colors"
 
 export default function Home({ location }) {
+  const { colorMode } = useColorMode()
   return (
     <Layout page={location.pathname}>
       <Flex h="calc(100vh - 80px)" className="home-section">
@@ -20,19 +22,37 @@ export default function Home({ location }) {
           flexDirection="column"
         >
           {/* <Heading color={["red", "green", "yellow", "orange"]}>Test</Heading> */}
-          <Heading size="md" color="gray.600">
+          <Heading size="md" color={colors.home.titleText.ln1[colorMode]}>
             Hello,
           </Heading>
-          <Heading size="xl">
-            I’m <chakra.span color="teal.300">savan,</chakra.span>
+          <Heading size="xl" color={colors.home.titleText.ln2.pt1[colorMode]}>
+            I’m{" "}
+            <chakra.span color={colors.home.titleText.ln2.pt2[colorMode]}>
+              savan,
+            </chakra.span>
           </Heading>
-          <Heading color="teal.300" size="md">
+          <Heading color={colors.home.titleText.ln3[colorMode]} size="md">
             Programmer & Web Developer
           </Heading>
-          <Heading color="gray.600" size="sm" mt="15px" maxW="530px">
-            I like to build <chakra.span color="teal.300">websites</chakra.span>{" "}
-            and <chakra.span color="teal.300">apps</chakra.span> that can change
-            our lives forever for the better.
+          <Heading
+            color={colors.home.subtitleText[colorMode]}
+            size="sm"
+            mt="15px"
+            maxW="530px"
+          >
+            I like to build{" "}
+            <chakra.span
+              color={colors.home.subtitleText.highlighted[colorMode]}
+            >
+              websites
+            </chakra.span>{" "}
+            and{" "}
+            <chakra.span
+              color={colors.home.subtitleText.highlighted[colorMode]}
+            >
+              apps
+            </chakra.span>{" "}
+            that can change our lives forever for the better.
           </Heading>
           <Flex mt="15px">
             <Link to="about">
@@ -55,8 +75,8 @@ export default function Home({ location }) {
                 w="fit-content"
                 variant="outline"
                 size="sm"
-                color="gray.600"
-                borderColor="gray.600"
+                color={colors.home.btns.contactBtn.text[colorMode]}
+                borderColor={colors.home.btns.contactBtn.border[colorMode]}
                 ml="10px"
                 fontWeight="500"
                 letterSpacing=".5px"
@@ -66,7 +86,7 @@ export default function Home({ location }) {
             </Link>
           </Flex>
           <Flex mt="15px">
-            <SocialMedia color={chakraTheme.colors.gray["600"]} />
+            <SocialMedia color={colors.home.icon[colorMode]} />
           </Flex>
         </Flex>
         <Flex
