@@ -20,6 +20,8 @@ export default function Home({ location }) {
           mb="auto"
           w={["100%", "50%", "50%", "50%"]}
           flexDirection="column"
+          h="100%"
+          justifyContent="center"
         >
           {/* <Heading color={["red", "green", "yellow", "orange"]}>Test</Heading> */}
           <Heading size="md" color={colors.home.titleText.ln1[colorMode]}>
