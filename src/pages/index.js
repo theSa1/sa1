@@ -67,7 +67,6 @@ export default function Home({ location }) {
                 _active={{ backgroundColor: "teal.300" }}
                 rightIcon={<HiChevronRight />}
                 fontWeight="500"
-                letterSpacing=".5px"
               >
                 Know More
               </Button>
@@ -81,7 +80,6 @@ export default function Home({ location }) {
                 borderColor={colors.home.btns.contactBtn.border[colorMode]}
                 ml="10px"
                 fontWeight="500"
-                letterSpacing=".5px"
               >
                 Contact Me
               </Button>
