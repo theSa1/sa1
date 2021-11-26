@@ -172,7 +172,9 @@ const Nav = ({ display, page: location }) => {
           color={colors.header.textColor[colorMode]}
           m="0 12px"
           _after={{ backgroundColor: "teal.300" }}
-          className={`menu-item${page === "/about" ? " active" : ""}`}
+          className={`menu-item${
+            page === "/about" || page === "/about/" ? " active" : ""
+          }`}
         >
           About
         </Heading>
@@ -184,7 +186,9 @@ const Nav = ({ display, page: location }) => {
           color={colors.header.textColor[colorMode]}
           m="0 12px"
           _after={{ backgroundColor: "teal.300" }}
-          className={`menu-item${page === "/projects" ? " active" : ""}`}
+          className={`menu-item${
+            page === "/projects" || page === "/projects/" ? " active" : ""
+          }`}
         >
           Projects
         </Heading>
@@ -196,7 +200,9 @@ const Nav = ({ display, page: location }) => {
           color={colors.header.textColor[colorMode]}
           m="0 12px"
           _after={{ backgroundColor: "teal.300" }}
-          className={`menu-item${page === "/contact" ? " active" : ""}`}
+          className={`menu-item${
+            page === "/contact" || page === "/contact/" ? " active" : ""
+          }`}
         >
           Contact
         </Heading>

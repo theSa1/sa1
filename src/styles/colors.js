@@ -93,4 +93,32 @@ export const colors = {
       dark: chakraTheme.colors.gray[300],
     },
   },
+  projects: {
+    title: {
+      light: chakraTheme.colors.gray[800],
+      dark: chakraTheme.colors.gray[50],
+    },
+    projectBg: {
+      light: chakraTheme.colors.white,
+      dark: chakraTheme.colors.gray[800],
+      border: {
+        light: chakraTheme.colors.gray[200],
+        dark: chakraTheme.colors.gray[700],
+      },
+    },
+    visitBtn: {
+      border: {
+        light: chakraTheme.colors.gray[600],
+        dark: chakraTheme.colors.gray[300],
+      },
+      text: {
+        light: chakraTheme.colors.gray[700],
+        dark: chakraTheme.colors.gray[50],
+      },
+    },
+    text: {
+      light: chakraTheme.colors.gray[600],
+      dark: chakraTheme.colors.gray[300],
+    },
+  },
 }
