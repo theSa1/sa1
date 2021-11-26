@@ -75,4 +75,22 @@ export const colors = {
       },
     },
   },
+  about: {
+    sectionBg: {
+      light: chakraTheme.colors.white,
+      dark: chakraTheme.colors.gray[800],
+      border: {
+        light: chakraTheme.colors.gray[200],
+        dark: chakraTheme.colors.gray[700],
+      },
+    },
+    title: {
+      light: chakraTheme.colors.gray[800],
+      dark: chakraTheme.colors.gray[50],
+    },
+    text: {
+      light: chakraTheme.colors.gray[900],
+      dark: chakraTheme.colors.gray[300],
+    },
+  },
 }
