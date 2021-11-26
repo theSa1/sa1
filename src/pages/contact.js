@@ -8,8 +8,12 @@ import React from "react"
 import { HiChevronRight } from "react-icons/hi"
 import { Layout } from "../components/Layout"
 import { SocialMedia } from "../components/SocialMedia"
+import { useColorMode } from "@chakra-ui/color-mode"
+import { colors } from "../styles/colors"
 
 export default function Contact({ location }) {
+  const { colorMode } = useColorMode()
+
   return (
     <Layout page={location.pathname}>
       <Grid
@@ -23,25 +27,38 @@ export default function Contact({ location }) {
             Contact <chakra.span color="teal.300">Me</chakra.span>
           </Heading>
           <Flex>
-            <Input placeholder="Name" mr="10px" backgroundColor="white" />
-            <Input placeholder="E-Main" ml="10px" backgroundColor="white" />
+            <Input
+              placeholder="Name"
+              mr="10px"
+              backgroundColor={colors.contact.inputBg[colorMode]}
+              borderColor={colors.contact.inputBg.border[colorMode]}
+            />
+            <Input
+              placeholder="E-Main"
+              ml="10px"
+              backgroundColor={colors.contact.inputBg[colorMode]}
+              borderColor={colors.contact.inputBg.border[colorMode]}
+            />
           </Flex>
           <Textarea
             placeholder="Message"
             h="230px"
             mt="20px"
-            backgroundColor="white"
+            backgroundColor={colors.contact.inputBg[colorMode]}
+            borderColor={colors.contact.inputBg.border[colorMode]}
           />
           <Flex mt="20px" alignItems="center">
             <Button
               mr="10px"
               rightIcon={<HiChevronRight />}
               variant="outline"
-              backgroundColor="white"
+              backgroundColor={colors.contact.inputBg[colorMode]}
+              borderColor={colors.contact.sendBtn.border[colorMode]}
+              color={colors.contact.sendBtn.text[colorMode]}
             >
               Send
             </Button>
-            <SocialMedia />
+            <SocialMedia color={colors.contact.icon[colorMode]} />
           </Flex>
         </Flex>
         <Flex
