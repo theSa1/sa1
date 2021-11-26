@@ -77,7 +77,6 @@ export default function Projects({ location }) {
                   size="xs"
                   lineHeight="5"
                   mt="4"
-                  color="gray.600"
                   mb="55px"
                   color={colors.projects.text[colorMode]}
                 >
